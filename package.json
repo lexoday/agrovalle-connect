@@ -1,0 +1,12 @@
+{
+  "name": "agrovalle-connect",
+  "version": "0.1.0",
+  "description": "Configuración de hooks de calidad (Husky) para AgroValle Connect",
+  "private": true,
+  "scripts": {
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.6"
+  }
+}

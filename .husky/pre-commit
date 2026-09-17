@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+echo "Ejecutando pruebas y verificación de estilo (Checkstyle) antes del commit..."
+
+mvn test && mvn checkstyle:check
+
+if [ $? -ne 0 ]; then
+  echo "Commit bloqueado: pruebas fallidas o advertencias de Checkstyle."
+  exit 1
+fi
