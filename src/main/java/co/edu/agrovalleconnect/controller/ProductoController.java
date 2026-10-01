@@ -16,15 +16,15 @@ public class ProductoController {
 
   private final ProductoService service;
 
-  public ProductoController(ProductoService service) {
+  public ProductoController(final ProductoService service) {
     this.service = service;
   }
 
   /** GET /api/v1/productos?municipio=Dagua&categoria=Frutas. */
   @GetMapping
   public ResponseEntity<List<ProductoDTO>> filtrar(
-      @RequestParam(required = false) String municipio,
-      @RequestParam(required = false) String categoria) {
+      @RequestParam(required = false) final String municipio,
+      @RequestParam(required = false) final String categoria) {
     return ResponseEntity.ok(service.filtrar(municipio, categoria));
   }
 }

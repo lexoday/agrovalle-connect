@@ -18,14 +18,14 @@ public class AuthController {
 
   private final ProductorService service;
 
-  public AuthController(ProductorService service) {
+  public AuthController(final ProductorService service) {
     this.service = service;
   }
 
   /** POST /api/v1/auth/register devuelve 201 Created. */
   @PostMapping("/register")
   public ResponseEntity<ProductorRespuestaDTO> registrar(
-      @Valid @RequestBody ProductorRegistroDTO dto) {
+      @Valid @RequestBody final ProductorRegistroDTO dto) {
     ProductorRespuestaDTO respuesta = service.registrar(dto);
     URI location = URI.create("/api/v1/productores/" + respuesta.id());
     return ResponseEntity.created(location).body(respuesta);

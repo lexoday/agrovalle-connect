@@ -43,7 +43,7 @@ public class Producto {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(final Long id) {
     this.id = id;
   }
 
@@ -51,7 +51,7 @@ public class Producto {
     return productor;
   }
 
-  public void setProductor(Productor productor) {
+  public void setProductor(final Productor productor) {
     this.productor = productor;
   }
 
@@ -59,7 +59,7 @@ public class Producto {
     return nombre;
   }
 
-  public void setNombre(String nombre) {
+  public void setNombre(final String nombre) {
     this.nombre = nombre;
   }
 
@@ -67,7 +67,7 @@ public class Producto {
     return categoria;
   }
 
-  public void setCategoria(String categoria) {
+  public void setCategoria(final String categoria) {
     this.categoria = categoria;
   }
 
@@ -75,7 +75,7 @@ public class Producto {
     return municipio;
   }
 
-  public void setMunicipio(String municipio) {
+  public void setMunicipio(final String municipio) {
     this.municipio = municipio;
   }
 
@@ -83,7 +83,7 @@ public class Producto {
     return precio;
   }
 
-  public void setPrecio(BigDecimal precio) {
+  public void setPrecio(final BigDecimal precio) {
     this.precio = precio;
   }
 
@@ -91,7 +91,7 @@ public class Producto {
     return cantidadKg;
   }
 
-  public void setCantidadKg(BigDecimal cantidadKg) {
+  public void setCantidadKg(final BigDecimal cantidadKg) {
     this.cantidadKg = cantidadKg;
   }
 }

@@ -12,12 +12,12 @@ public class ProductoService {
 
   private final ProductoRepository repository;
 
-  public ProductoService(ProductoRepository repository) {
+  public ProductoService(final ProductoRepository repository) {
     this.repository = repository;
   }
 
   /** Filtra por municipio y/o categoría (ambos opcionales). */
-  public List<ProductoDTO> filtrar(String municipio, String categoria) {
+  public List<ProductoDTO> filtrar(final String municipio, final String categoria) {
     boolean hayMunicipio = municipio != null && !municipio.isBlank();
     boolean hayCategoria = categoria != null && !categoria.isBlank();
     List<Producto> productos;

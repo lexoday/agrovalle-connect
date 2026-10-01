@@ -7,7 +7,7 @@ public record ProductorRespuestaDTO(
     Long id, String nombre, String correo, String municipio, String nombreFinca) {
 
   /** Construye el DTO a partir de la entidad. */
-  public static ProductorRespuestaDTO desde(Productor p) {
+  public static ProductorRespuestaDTO desde(final Productor p) {
     return new ProductorRespuestaDTO(
         p.getId(), p.getNombre(), p.getCorreo(), p.getMunicipio(), p.getNombreFinca());
   }

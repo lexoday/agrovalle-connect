@@ -13,7 +13,7 @@ public record ProductoDTO(
     BigDecimal cantidadKg) {
 
   /** Construye el DTO a partir de la entidad. */
-  public static ProductoDTO desde(Producto p) {
+  public static ProductoDTO desde(final Producto p) {
     return new ProductoDTO(
         p.getId(), p.getNombre(), p.getCategoria(), p.getMunicipio(),
         p.getPrecio(), p.getCantidadKg());
