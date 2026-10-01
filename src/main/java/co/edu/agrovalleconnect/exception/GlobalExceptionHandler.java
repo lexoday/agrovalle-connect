@@ -13,27 +13,27 @@ public class GlobalExceptionHandler {
 
   /** Correo repetido: 409. */
   @ExceptionHandler(CorreoDuplicadoException.class)
-  public ResponseEntity<Map<String, String>> handleCorreo(CorreoDuplicadoException ex) {
+  public ResponseEntity<Map<String, String>> handleCorreo(final CorreoDuplicadoException ex) {
     return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("error", ex.getMessage()));
   }
 
   /** Cédula repetida: 409. */
   @ExceptionHandler(CedulaDuplicadaException.class)
-  public ResponseEntity<Map<String, String>> handleCedula(CedulaDuplicadaException ex) {
+  public ResponseEntity<Map<String, String>> handleCedula(final CedulaDuplicadaException ex) {
     return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("error", ex.getMessage()));
   }
 
   /** Productor inexistente: 404. */
   @ExceptionHandler(ProductorNoEncontradoException.class)
   public ResponseEntity<Map<String, String>> handleNoEncontrado(
-      ProductorNoEncontradoException ex) {
+      final ProductorNoEncontradoException ex) {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", ex.getMessage()));
   }
 
   /** Validación de campos: 400. */
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<Map<String, String>> handleValidacion(
-      MethodArgumentNotValidException ex) {
+      final MethodArgumentNotValidException ex) {
     String mensaje = ex.getBindingResult().getFieldErrors().get(0).getDefaultMessage();
     return ResponseEntity.badRequest().body(Map.of("error", mensaje));
   }

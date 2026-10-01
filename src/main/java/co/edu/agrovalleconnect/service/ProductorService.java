@@ -17,13 +17,14 @@ public class ProductorService {
   private final ProductorRepository repository;
   private final PasswordEncoder passwordEncoder;
 
-  public ProductorService(ProductorRepository repository, PasswordEncoder passwordEncoder) {
+  public ProductorService(
+      final ProductorRepository repository, final PasswordEncoder passwordEncoder) {
     this.repository = repository;
     this.passwordEncoder = passwordEncoder;
   }
 
   /** Registra un productor validando duplicidad de cédula y correo. */
-  public ProductorRespuestaDTO registrar(ProductorRegistroDTO dto) {
+  public ProductorRespuestaDTO registrar(final ProductorRegistroDTO dto) {
     if (repository.existsByCedula(dto.cedula())) {
       throw new CedulaDuplicadaException("La cédula ya está registrada");
     }
@@ -41,7 +42,7 @@ public class ProductorService {
   }
 
   /** Consulta un productor por id. */
-  public ProductorRespuestaDTO consultarPorId(Long id) {
+  public ProductorRespuestaDTO consultarPorId(final Long id) {
     Productor p =
         repository
             .findById(id)

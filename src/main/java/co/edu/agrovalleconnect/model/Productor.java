@@ -38,7 +38,7 @@ public class Productor {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(final Long id) {
     this.id = id;
   }
 
@@ -46,7 +46,7 @@ public class Productor {
     return nombre;
   }
 
-  public void setNombre(String nombre) {
+  public void setNombre(final String nombre) {
     this.nombre = nombre;
   }
 
@@ -54,7 +54,7 @@ public class Productor {
     return correo;
   }
 
-  public void setCorreo(String correo) {
+  public void setCorreo(final String correo) {
     this.correo = correo;
   }
 
@@ -62,7 +62,7 @@ public class Productor {
     return cedula;
   }
 
-  public void setCedula(String cedula) {
+  public void setCedula(final String cedula) {
     this.cedula = cedula;
   }
 
@@ -70,7 +70,7 @@ public class Productor {
     return municipio;
   }
 
-  public void setMunicipio(String municipio) {
+  public void setMunicipio(final String municipio) {
     this.municipio = municipio;
   }
 
@@ -78,7 +78,7 @@ public class Productor {
     return passwordHash;
   }
 
-  public void setPasswordHash(String passwordHash) {
+  public void setPasswordHash(final String passwordHash) {
     this.passwordHash = passwordHash;
   }
 
@@ -86,7 +86,7 @@ public class Productor {
     return nombreFinca;
   }
 
-  public void setNombreFinca(String nombreFinca) {
+  public void setNombreFinca(final String nombreFinca) {
     this.nombreFinca = nombreFinca;
   }
 }
