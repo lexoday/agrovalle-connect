@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Compilar, lint, pruebas y cobertura
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK 17 (Temurin)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Paso 1 - Compilación limpia
+        run: mvn -B clean compile
+
+      - name: Paso 2 - Verificación de linter (Checkstyle)
+        run: mvn -B checkstyle:check
+
+      - name: Paso 3 - Pruebas unitarias, integración y cobertura JaCoCo >= 60%
+        run: mvn -B verify
+
+      - name: Subir reporte JaCoCo
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/
