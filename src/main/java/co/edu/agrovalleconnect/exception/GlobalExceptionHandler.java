@@ -37,4 +37,10 @@ public class GlobalExceptionHandler {
     String mensaje = ex.getBindingResult().getFieldErrors().get(0).getDefaultMessage();
     return ResponseEntity.badRequest().body(Map.of("error", mensaje));
   }
+
+  /** Argumento de negocio inválido (por ejemplo, municipio sin tarifa): 400. */
+  @ExceptionHandler(IllegalArgumentException.class)
+  public ResponseEntity<Map<String, String>> handleArgumento(final IllegalArgumentException ex) {
+    return ResponseEntity.badRequest().body(Map.of("error", ex.getMessage()));
+  }
 }
