@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /** Acceso a datos de productos. */
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
-  List<Producto> findByMunicipioIgnoreCaseAndCategoriaIgnoreCase(
+  List<Producto> findByMunicipioNombreIgnoreCaseAndCategoriaNombreIgnoreCase(
       String municipio, String categoria);
 
-  List<Producto> findByMunicipioIgnoreCase(String municipio);
+  List<Producto> findByMunicipioNombreIgnoreCase(String municipio);
 
-  List<Producto> findByCategoriaIgnoreCase(String categoria);
+  List<Producto> findByCategoriaNombreIgnoreCase(String categoria);
 }

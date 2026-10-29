@@ -7,8 +7,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import co.edu.agrovalleconnect.dto.ProductorRespuestaDTO;
-import co.edu.agrovalleconnect.exception.CedulaDuplicadaException;
 import co.edu.agrovalleconnect.service.ProductorService;
+import co.edu.agrovalleconnect.exception.CedulaDuplicadaException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
