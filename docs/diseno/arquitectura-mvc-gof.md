@@ -17,7 +17,19 @@ Regla de dependencias: cada capa solo llama a la inmediatamente inferior. Ningú
 - **Singleton / IoC (Inyección de dependencias):** Spring crea los beans como singleton; las dependencias se inyectan por constructor (`ProductorService`, `ProductoService`, `CalculadorFleteService`).
 - **DTO:** `ProductorRegistroDTO`, `ProductorRespuestaDTO` y `ProductoDTO` aíslan las entidades de los contratos JSON. `ProductorRespuestaDTO` no expone la contraseña.
 - **Data Mapper / Factory:** `ProductorRespuestaDTO.desde(...)` y `ProductoDTO.desde(...)` convierten entidades en DTO.
-- **Strategy (comportamiento, Sprint 2):** `EstrategiaFlete` con una implementación por municipio del Valle del Cauca. Se pueden agregar estrategias sin modificar `CalculadorFleteService` (OCP).
+- **Strategy (comportamiento, Sprint 2):** `EstrategiaFlete` con una implementación por municipio del Valle del Cauca. Se pueden agregar estrategias sin modificar `CalculadorFleteServiceImpl` (OCP).
+
+## Principios SOLID visibles en el código
+
+| Principio | Evidencia |
+|---|---|
+| SRP | Los controladores traducen HTTP, los servicios aplican reglas y los repositorios consultan datos. |
+| OCP | `CalculadorFleteServiceImpl` delega el cálculo en estrategias `EstrategiaFlete`; nuevas tarifas no requieren modificar el selector. |
+| LSP | Las implementaciones de `ProductorService`, `ProductoService` y `CalculadorFleteService` pueden sustituirse por sus contratos. |
+| ISP | Los contratos de servicio exponen solo las operaciones necesarias por cada capacidad; los repositorios declaran consultas específicas. |
+| DIP | Los controladores dependen de interfaces de servicio y las implementaciones reciben repositorios, codificador y estrategias por constructor. |
+
+Las pruebas unitarias usan Mockito para aislar las reglas de negocio y las pruebas web usan MockMvc para validar el contrato HTTP.
 
 ## Diagrama de despliegue
 
@@ -37,3 +49,5 @@ flowchart LR
 ```
 
 Exportar a PNG para `docs/diseno/diagrama-despliegue.png`.
+
+![Diagrama de despliegue de AgroValle Connect](./diagrama-despliegue.png)

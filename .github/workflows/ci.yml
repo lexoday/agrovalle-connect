@@ -2,13 +2,13 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
   pull_request:
-    branches: [main]
+    branches: [main, develop]
 
 jobs:
   build:
-    name: Compilar, lint, pruebas y cobertura
+    name: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

@@ -11,8 +11,12 @@ import static org.mockito.Mockito.when;
 import co.edu.agrovalleconnect.dto.ProductoDTO;
 import co.edu.agrovalleconnect.dto.ProductoRegistroDTO;
 import co.edu.agrovalleconnect.exception.ProductorNoEncontradoException;
+import co.edu.agrovalleconnect.model.Categoria;
+import co.edu.agrovalleconnect.model.Municipio;
 import co.edu.agrovalleconnect.model.Producto;
 import co.edu.agrovalleconnect.model.Productor;
+import co.edu.agrovalleconnect.repository.CategoriaRepository;
+import co.edu.agrovalleconnect.repository.MunicipioRepository;
 import co.edu.agrovalleconnect.repository.ProductoRepository;
 import co.edu.agrovalleconnect.repository.ProductorRepository;
 import java.math.BigDecimal;
@@ -31,13 +35,19 @@ class ProductoServiceTest {
 
   @Mock private ProductoRepository repository;
   @Mock private ProductorRepository productorRepository;
-  @InjectMocks private ProductoService service;
+  @Mock private CategoriaRepository categoriaRepository;
+  @Mock private MunicipioRepository municipioRepository;
+  @InjectMocks private ProductoServiceImpl service;
 
   private Producto producto(String nombre) {
+    Categoria categoria = new Categoria();
+    categoria.setNombre("Frutas");
+    Municipio municipio = new Municipio();
+    municipio.setNombre("Dagua");
     Producto p = new Producto();
     p.setNombre(nombre);
-    p.setCategoria("Frutas");
-    p.setMunicipio("Dagua");
+    p.setCategoria(categoria);
+    p.setMunicipio(municipio);
     p.setPrecio(new BigDecimal("2500.00"));
     p.setCantidadKg(new BigDecimal("100.00"));
     return p;
@@ -53,7 +63,13 @@ class ProductoServiceTest {
   void publicaCosechaDeProductorExistente() {
     Productor productor = new Productor();
     productor.setId(1L);
+    Categoria categoria = new Categoria();
+    categoria.setNombre("Frutas");
+    Municipio municipio = new Municipio();
+    municipio.setNombre("Dagua");
     when(productorRepository.findById(1L)).thenReturn(Optional.of(productor));
+    when(categoriaRepository.findByNombreIgnoreCase("Frutas")).thenReturn(Optional.of(categoria));
+    when(municipioRepository.findByNombreIgnoreCase("Dagua")).thenReturn(Optional.of(municipio));
     when(repository.save(any(Producto.class))).thenAnswer(inv -> inv.getArgument(0));
 
     ProductoDTO resultado = service.publicar(datosCosecha());
@@ -74,9 +90,38 @@ class ProductoServiceTest {
   }
 
   @Test
+  @DisplayName("Dada una categoría no registrada, cuando publica, rechaza la cosecha")
+  void rechazaCategoriaInexistente() {
+    Productor productor = new Productor();
+    when(productorRepository.findById(1L)).thenReturn(Optional.of(productor));
+    when(categoriaRepository.findByNombreIgnoreCase("Frutas")).thenReturn(Optional.empty());
+
+    assertThatThrownBy(() -> service.publicar(datosCosecha()))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("No existe la categoría Frutas");
+    verify(repository, never()).save(any(Producto.class));
+  }
+
+  @Test
+  @DisplayName("Dado un municipio no registrado, cuando publica, rechaza la cosecha")
+  void rechazaMunicipioInexistente() {
+    Productor productor = new Productor();
+    Categoria categoria = new Categoria();
+    when(productorRepository.findById(1L)).thenReturn(Optional.of(productor));
+    when(categoriaRepository.findByNombreIgnoreCase("Frutas"))
+        .thenReturn(Optional.of(categoria));
+    when(municipioRepository.findByNombreIgnoreCase("Dagua")).thenReturn(Optional.empty());
+
+    assertThatThrownBy(() -> service.publicar(datosCosecha()))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("No existe el municipio Dagua");
+    verify(repository, never()).save(any(Producto.class));
+  }
+
+  @Test
   @DisplayName("Dados municipio y categoría, cuando se filtra, entonces usa la consulta combinada")
   void filtraPorMunicipioYCategoria() {
-    when(repository.findByMunicipioIgnoreCaseAndCategoriaIgnoreCase("Dagua", "Frutas"))
+    when(repository.findByMunicipioNombreIgnoreCaseAndCategoriaNombreIgnoreCase("Dagua", "Frutas"))
         .thenReturn(List.of(producto("Mango")));
 
     List<ProductoDTO> resultado = service.filtrar("Dagua", "Frutas");
@@ -88,7 +133,7 @@ class ProductoServiceTest {
   @Test
   @DisplayName("Dado solo municipio, cuando se filtra, entonces consulta por municipio")
   void filtraSoloMunicipio() {
-    when(repository.findByMunicipioIgnoreCase("Dagua")).thenReturn(List.of(producto("Mango")));
+    when(repository.findByMunicipioNombreIgnoreCase("Dagua")).thenReturn(List.of(producto("Mango")));
 
     assertThat(service.filtrar("Dagua", null)).hasSize(1);
   }
@@ -96,7 +141,7 @@ class ProductoServiceTest {
   @Test
   @DisplayName("Dado solo categoría, cuando se filtra, entonces consulta por categoría")
   void filtraSoloCategoria() {
-    when(repository.findByCategoriaIgnoreCase("Frutas")).thenReturn(List.of(producto("Mango")));
+    when(repository.findByCategoriaNombreIgnoreCase("Frutas")).thenReturn(List.of(producto("Mango")));
 
     assertThat(service.filtrar(null, "Frutas")).hasSize(1);
   }
@@ -112,7 +157,7 @@ class ProductoServiceTest {
   @Test
   @DisplayName("Dado un municipio sin productos, cuando se filtra, entonces devuelve lista vacía")
   void sinResultados() {
-    when(repository.findByMunicipioIgnoreCase(anyString())).thenReturn(List.of());
+    when(repository.findByMunicipioNombreIgnoreCase(anyString())).thenReturn(List.of());
 
     assertThat(service.filtrar("Buga", null)).isEmpty();
   }

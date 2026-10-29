@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1 1L11 6L1 11Z" fill="#287c6f"/>
+    </marker>
+    <style>
+      text{font-family:Segoe UI,Arial,sans-serif;fill:#17323a}
+      .title{font-size:34px;font-weight:700}
+      .subtitle{font-size:18px;fill:#577078}
+      .head{font-size:22px;font-weight:700}
+      .body{font-size:18px}
+      .small{font-size:15px;fill:#577078}
+    </style>
+  </defs>
+  <rect width="1400" height="820" fill="#f3f8f6"/>
+  <text x="70" y="76" class="title">AgroValle Connect · Diagrama de despliegue</text>
+  <text x="70" y="112" class="subtitle">Topología física de ejecución y protocolos entre nodos</text>
+  <rect x="70" y="205" width="350" height="385" rx="22" fill="#fff" stroke="#a9c8bf" stroke-width="3"/>
+  <rect x="70" y="205" width="350" height="72" rx="22" fill="#d9eee8"/>
+  <path d="M70 255V277H420V255" fill="#d9eee8"/>
+  <text x="105" y="251" class="head">Nodo 1 · Cliente</text>
+  <rect x="123" y="325" width="244" height="142" rx="14" fill="#f3f8f6" stroke="#8eb8ad" stroke-width="2"/>
+  <rect x="145" y="345" width="200" height="105" rx="7" fill="#fff" stroke="#8eb8ad" stroke-width="2"/>
+  <path d="M205 468h80m-67 0-12 17h103l-12-17" fill="#8eb8ad"/>
+  <text x="165" y="510" class="body">Navegador web</text>
+  <text x="120" y="548" class="small">Consume la API REST</text>
+
+  <rect x="525" y="205" width="350" height="385" rx="22" fill="#fff" stroke="#a9c8bf" stroke-width="3"/>
+  <rect x="525" y="205" width="350" height="72" rx="22" fill="#d9eee8"/>
+  <path d="M525 255V277H875V255" fill="#d9eee8"/>
+  <text x="560" y="251" class="head">Nodo 2 · Aplicación</text>
+  <rect x="575" y="320" width="250" height="170" rx="14" fill="#f3f8f6" stroke="#8eb8ad" stroke-width="2"/>
+  <text x="625" y="360" class="body" font-weight="700">Spring Boot 3.3</text>
+  <text x="625" y="394" class="body">JVM · Java 17 LTS</text>
+  <text x="625" y="428" class="body">Tomcat embebido</text>
+  <text x="625" y="462" class="body">REST · Puerto 8080</text>
+  <text x="575" y="548" class="small">API, servicios y persistencia</text>
+
+  <rect x="980" y="205" width="350" height="385" rx="22" fill="#fff" stroke="#a9c8bf" stroke-width="3"/>
+  <rect x="980" y="205" width="350" height="72" rx="22" fill="#d9eee8"/>
+  <path d="M980 255V277H1330V255" fill="#d9eee8"/>
+  <text x="1015" y="251" class="head">Nodo 3 · Datos</text>
+  <ellipse cx="1155" cy="359" rx="108" ry="33" fill="#eaf4f1" stroke="#8eb8ad" stroke-width="3"/>
+  <path d="M1047 359v107c0 18 48 33 108 33s108-15 108-33V359" fill="#eaf4f1" stroke="#8eb8ad" stroke-width="3"/>
+  <ellipse cx="1155" cy="466" rx="108" ry="33" fill="#d9eee8" stroke="#8eb8ad" stroke-width="3"/>
+  <path d="M1047 410c0 18 48 33 108 33s108-15 108-33" fill="none" stroke="#8eb8ad" stroke-width="2"/>
+  <text x="1092" y="401" class="body" font-weight="700">PostgreSQL</text>
+  <text x="1095" y="455" class="small">agrovalle_db</text>
+  <text x="1098" y="548" class="small">Puerto TCP 5432</text>
+
+  <path d="M420 398H525" fill="none" stroke="#287c6f" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="427" y="377" class="small">HTTPS · JSON</text>
+  <path d="M875 398H980" fill="none" stroke="#287c6f" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="888" y="377" class="small">JDBC · TCP 5432</text>
+  <text x="70" y="730" class="small">La aplicación se conecta a PostgreSQL mediante JDBC; el cliente consume endpoints REST.</text>
+</svg>

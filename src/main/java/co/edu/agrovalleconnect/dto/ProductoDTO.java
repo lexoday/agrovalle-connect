@@ -15,7 +15,11 @@ public record ProductoDTO(
   /** Construye el DTO a partir de la entidad. */
   public static ProductoDTO desde(final Producto p) {
     return new ProductoDTO(
-        p.getId(), p.getNombre(), p.getCategoria(), p.getMunicipio(),
-        p.getPrecio(), p.getCantidadKg());
+        p.getId(),
+        p.getNombre(),
+        p.getCategoria().getNombre(),
+        p.getMunicipio().getNombre(),
+        p.getPrecio(),
+        p.getCantidadKg());
   }
 }
