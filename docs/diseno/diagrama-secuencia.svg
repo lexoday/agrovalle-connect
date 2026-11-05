@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="960" viewBox="0 0 1500 960">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1 1L11 6L1 11Z" fill="#287c6f"/>
+    </marker>
+    <marker id="return" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1 1L11 6L1 11Z" fill="#82969b"/>
+    </marker>
+    <style>
+      text{font-family:Segoe UI,Arial,sans-serif;fill:#17323a}
+      .title{font-size:32px;font-weight:700}
+      .subtitle{font-size:17px;fill:#577078}
+      .head{font-size:17px;font-weight:700}
+      .message{font-size:15px}
+      .returnText{font-size:14px;fill:#577078}
+    </style>
+  </defs>
+  <rect width="1500" height="960" fill="#f3f8f6"/>
+  <text x="60" y="70" class="title">AgroValle Connect · Secuencia HU-02</text>
+  <text x="60" y="103" class="subtitle">Publicación de cosecha con validación, reglas de servicio y persistencia</text>
+  <g>
+    <rect x="70" y="145" width="190" height="68" rx="12" fill="#d9eee8" stroke="#8eb8ad" stroke-width="2"/>
+    <rect x="320" y="145" width="190" height="68" rx="12" fill="#d9eee8" stroke="#8eb8ad" stroke-width="2"/>
+    <rect x="570" y="145" width="190" height="68" rx="12" fill="#d9eee8" stroke="#8eb8ad" stroke-width="2"/>
+    <rect x="820" y="145" width="190" height="68" rx="12" fill="#d9eee8" stroke="#8eb8ad" stroke-width="2"/>
+    <rect x="1070" y="145" width="190" height="68" rx="12" fill="#d9eee8" stroke="#8eb8ad" stroke-width="2"/>
+    <text x="103" y="186" class="head">Cliente HTTP</text>
+    <text x="350" y="186" class="head">ProductoController</text>
+    <text x="610" y="186" class="head">ProductoService</text>
+    <text x="862" y="186" class="head">Repositories</text>
+    <text x="1124" y="186" class="head">PostgreSQL</text>
+    <path d="M165 213V860M415 213V860M665 213V860M915 213V860M1165 213V860" stroke="#afc1c1" stroke-width="2" stroke-dasharray="8 8"/>
+  </g>
+  <g stroke="#287c6f" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M165 270H415"/>
+    <path d="M415 354H665"/>
+    <path d="M665 438H915"/>
+    <path d="M915 522H1165"/>
+    <path d="M665 690H915"/>
+    <path d="M915 774H1165"/>
+  </g>
+  <g class="message">
+    <text x="184" y="253">POST /api/v1/productos · JSON</text>
+    <text x="435" y="337">@Valid · valida campos y rangos</text>
+    <text x="685" y="421">publicar(datos)</text>
+    <text x="930" y="505">buscar productorId</text>
+    <text x="930" y="673">guardar cosecha</text>
+    <text x="930" y="757">INSERT producto</text>
+  </g>
+  <rect x="354" y="300" width="122" height="28" rx="14" fill="#fff1d2" stroke="#dfbd73"/>
+  <text x="371" y="320" class="returnText">400 si inválido</text>
+  <g stroke="#82969b" stroke-width="2.5" fill="none" marker-end="url(#return)" stroke-dasharray="7 5">
+    <path d="M1165 564H915"/>
+    <path d="M915 606H665"/>
+    <path d="M665 732H415"/>
+    <path d="M1165 816H915"/>
+    <path d="M915 858H665"/>
+    <path d="M665 900H415"/>
+  </g>
+  <g class="returnText">
+    <text x="1008" y="550">productor encontrado</text>
+    <text x="706" y="592">Productor</text>
+    <text x="463" y="718">producto persistido</text>
+    <text x="1004" y="802">id generado</text>
+    <text x="708" y="844">ProductoDTO</text>
+    <text x="457" y="886">201 Created + Location</text>
+  </g>
+  <rect x="520" y="626" width="292" height="34" rx="16" fill="#fff1d2" stroke="#dfbd73"/>
+  <text x="543" y="649" class="returnText">404 si no existe el productor</text>
+</svg>

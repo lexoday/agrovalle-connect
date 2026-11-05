@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1450" height="900" viewBox="0 0 1450 900">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1 1L11 6L1 11Z" fill="#287c6f"/>
+    </marker>
+    <style>
+      text{font-family:Segoe UI,Arial,sans-serif;fill:#17323a}
+      .title{font-size:32px;font-weight:700}
+      .subtitle{font-size:17px;fill:#577078}
+      .layer{font-size:18px;font-weight:700;fill:#287c6f}
+      .head{font-size:18px;font-weight:700}
+      .body{font-size:15px;fill:#577078}
+      .stereo{font-size:13px;font-weight:700;fill:#287c6f}
+    </style>
+  </defs>
+  <rect width="1450" height="900" fill="#f3f8f6"/>
+  <text x="60" y="70" class="title">AgroValle Connect · Componentes</text>
+  <text x="60" y="103" class="subtitle">Contratos explícitos entre capas y dependencias orientadas a interfaces</text>
+  <g fill="#fff" stroke="#a9c8bf" stroke-width="2">
+    <rect x="55" y="160" width="260" height="575" rx="18"/>
+    <rect x="350" y="160" width="330" height="575" rx="18"/>
+    <rect x="715" y="160" width="340" height="575" rx="18"/>
+    <rect x="1090" y="160" width="305" height="575" rx="18"/>
+  </g>
+  <g class="layer">
+    <text x="85" y="198">API REST</text>
+    <text x="380" y="198">Servicios · contratos</text>
+    <text x="745" y="198">Persistencia</text>
+    <text x="1120" y="198">Dominio / BD</text>
+  </g>
+  <g>
+    <rect x="85" y="245" width="200" height="90" rx="12" fill="#d9eee8" stroke="#8eb8ad" stroke-width="2"/>
+    <text x="112" y="281" class="head">AuthController</text>
+    <text x="112" y="310" class="body">registro de productor</text>
+    <rect x="85" y="375" width="200" height="90" rx="12" fill="#d9eee8" stroke="#8eb8ad" stroke-width="2"/>
+    <text x="105" y="411" class="head">ProductoController</text>
+    <text x="108" y="440" class="body">publicación y filtros</text>
+    <rect x="85" y="505" width="200" height="90" rx="12" fill="#d9eee8" stroke="#8eb8ad" stroke-width="2"/>
+    <text x="103" y="541" class="head">ProductorController</text>
+    <text x="108" y="570" class="body">consulta de perfil</text>
+    <rect x="85" y="635" width="200" height="62" rx="12" fill="#edf4f2" stroke="#a9c8bf" stroke-width="2"/>
+    <text x="135" y="674" class="head">DTO · @Valid</text>
+  </g>
+  <g>
+    <rect x="385" y="240" width="260" height="105" rx="12" fill="#fff" stroke="#287c6f" stroke-width="2"/>
+    <text x="408" y="267" class="stereo">«interface»</text>
+    <text x="408" y="294" class="head">ProductorService</text>
+    <text x="408" y="321" class="body">registrar · consultarPorId</text>
+    <rect x="385" y="365" width="260" height="95" rx="12" fill="#eaf4f1" stroke="#8eb8ad" stroke-width="2"/>
+    <text x="408" y="402" class="head">ProductorServiceImpl</text>
+    <text x="408" y="431" class="body">validación y reglas de negocio</text>
+    <rect x="385" y="495" width="260" height="95" rx="12" fill="#eaf4f1" stroke="#8eb8ad" stroke-width="2"/>
+    <text x="408" y="532" class="head">ProductoServiceImpl</text>
+    <text x="408" y="561" class="body">publicación y búsqueda</text>
+    <rect x="385" y="625" width="260" height="72" rx="12" fill="#fff" stroke="#287c6f" stroke-width="2"/>
+    <text x="408" y="654" class="stereo">«interface»</text>
+    <text x="408" y="681" class="head">ProductoService</text>
+  </g>
+  <g>
+    <rect x="750" y="260" width="270" height="110" rx="12" fill="#d9eee8" stroke="#8eb8ad" stroke-width="2"/>
+    <text x="780" y="300" class="head">ProductorRepository</text>
+    <text x="780" y="333" class="body">CRUD · cédula · correo</text>
+    <rect x="750" y="425" width="270" height="110" rx="12" fill="#d9eee8" stroke="#8eb8ad" stroke-width="2"/>
+    <text x="780" y="465" class="head">ProductoRepository</text>
+    <text x="780" y="498" class="body">CRUD · filtros del catálogo</text>
+    <rect x="750" y="590" width="270" height="105" rx="12" fill="#edf4f2" stroke="#a9c8bf" stroke-width="2"/>
+    <text x="815" y="632" class="head">Spring Data JPA</text>
+    <text x="815" y="663" class="body">adaptador de persistencia</text>
+  </g>
+  <g>
+    <rect x="1125" y="260" width="235" height="110" rx="12" fill="#eaf4f1" stroke="#8eb8ad" stroke-width="2"/>
+    <text x="1173" y="302" class="head">Productor</text>
+    <text x="1165" y="335" class="body">entidad JPA</text>
+    <rect x="1125" y="425" width="235" height="110" rx="12" fill="#eaf4f1" stroke="#8eb8ad" stroke-width="2"/>
+    <text x="1192" y="467" class="head">Producto</text>
+    <text x="1165" y="500" class="body">entidad JPA</text>
+    <rect x="1125" y="590" width="235" height="105" rx="12" fill="#d9eee8" stroke="#8eb8ad" stroke-width="2"/>
+    <text x="1177" y="632" class="head">PostgreSQL</text>
+    <text x="1165" y="663" class="body">almacenamiento relacional</text>
+  </g>
+  <g fill="none" stroke="#287c6f" stroke-width="3" marker-end="url(#arrow)">
+    <path d="M285 290H385"/>
+    <path d="M285 420H385"/>
+    <path d="M285 550H385"/>
+    <path d="M645 405H750"/>
+    <path d="M645 540H750"/>
+    <path d="M1020 315H1125"/>
+    <path d="M1020 480H1125"/>
+    <path d="M1242 370V590"/>
+    <path d="M1242 535V590"/>
+  </g>
+  <path d="M515 345V365M515 590V625" fill="none" stroke="#82969b" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+  <text x="60" y="800" class="body">Los controladores dependen de interfaces de servicio; las implementaciones reciben repositorios por constructor.</text>
+</svg>

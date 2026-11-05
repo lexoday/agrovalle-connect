@@ -72,6 +72,8 @@ Ejemplo: `feat(api): implementar endpoint de registro de agricultores`
 
 ## Cómo correr el proyecto
 
+La estructura PostgreSQL de instalación nueva está en [`docs/diseno/schema.sql`](./docs/diseno/schema.sql). Para una base existente que todavía use el esquema anterior, primero haz una copia de seguridad y revisa [`docs/diseno/schema-migration-v2.sql`](./docs/diseno/schema-migration-v2.sql); no ejecutes el script de instalación nueva sobre tablas existentes.
+
 ```bash
 # Compilar y correr pruebas
 mvn clean install

@@ -25,6 +25,7 @@ Thumbs.db
 # Variables de entorno / credenciales
 .env
 application-local.properties
+src/main/resources/application.properties
 
 # Node (Husky)
 node_modules/
